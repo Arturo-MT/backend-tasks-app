@@ -1,10 +1,12 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const http = require('http')
+
+const server = http.createServer(app);
+const app = express();
 
 const taskRoutes = require('./routes/task.routes');
-
-const app = express();
 
 app.use(cors());
 app.use(morgan('dev'));
@@ -18,5 +20,8 @@ app.use((err, req, res, next) => {
     })
 });
 
-app.listen(4000);
-console.log("Server on Port 4000");
+app.set('port', process.env.PORT || 3000);
+
+server.listen(app.get('port'), ()=>{
+    console.log(`Server on port: ${app.get('port')}`);
+});
