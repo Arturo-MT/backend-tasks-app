@@ -8,6 +8,7 @@ const app = express();
 
 const taskRoutes = require('./routes/task.routes');
 
+
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
@@ -25,3 +26,7 @@ app.set('port', process.env.PORT || 3000);
 server.listen(app.get('port'), ()=>{
     console.log(`Server on port: ${app.get('port')}`);
 });
+
+app.get('/', (res, req)=>{
+    res.send('Welcome')
+})
