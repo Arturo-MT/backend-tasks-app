@@ -1,20 +1,16 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-const http = require('http')
+const http = require('http');
 
+const app = express();
 const server = http.createServer(app);
-const app = express(), path = require('path');
 
 const taskRoutes = require('./routes/task.routes');
-const server = http.createServer(app);
 
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
-app.get('/favicon.ico', (req, res) => res.status(200));
-
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(taskRoutes);
 
@@ -32,5 +28,5 @@ server.listen(app.get('port'), ()=>{
 });
 
 app.get('/', (res, req)=>{
-    res.send('Welcome')
-})
+    res.send('Welcome');
+});
