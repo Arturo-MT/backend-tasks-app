@@ -12,6 +12,7 @@ const server = http.createServer(app);
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
+app.get('/favicon.ico', (req, res) => res.status(200));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
