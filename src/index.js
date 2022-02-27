@@ -7,7 +7,11 @@ const server = http.createServer(app);
 const app = express(), path = require('path');
 
 const taskRoutes = require('./routes/task.routes');
-
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hello World!\n');
+  });
 
 app.use(cors());
 app.use(morgan('dev'));
@@ -22,6 +26,7 @@ app.use((err, req, res, next) => {
 });
 
 app.set('port', process.env.PORT || 3000);
+
 
 server.listen(app.get('port'), ()=>{
     console.log(`Server on port: ${app.get('port')}`);
