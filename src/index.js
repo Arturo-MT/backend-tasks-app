@@ -4,7 +4,7 @@ const cors = require('cors');
 const http = require('http')
 
 const server = http.createServer(app);
-const app = express();
+const app = express(), path = require('path');
 
 const taskRoutes = require('./routes/task.routes');
 
